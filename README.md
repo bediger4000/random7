@@ -19,6 +19,10 @@ $ ./r7 | sort | uniq -c
  100141 4
 $
 ```
+
+`r7` invokes `rand5` 500,000 times.
+That's as close to uniform as you could expect.
+
 ## Analysis
 
 [Code](r7.go)
@@ -35,7 +39,48 @@ so will such a `rand5` function,
 it just "cuts off" the uniformly-distributed-values
 that don't fit the 0-4 range.
 
+My algorithm doesn't have a bounded run time:
+it's entirely possible to get a series of values
+of 5 or 6 from the `rand7` function,
+which would cause my function to never return.
+It's certainly possible to calculate that `rand5`
+returns 5/7 of the time after 1 invocation of `rand7`,
+2/7*5/7 of the time after 2 invocations,
+but I did an empirical investigation by writing
+a [version](r7a.go) that outputs the number of invocations
+of `rand7` it did to get to a 0-4 valued output of `rand5`
+
+```sh
+$ go build r7a.go
+$ ./r7a | sort -k1.1n | uniq -c | awk '{printf "%4d  %.5f\n", $2, $1/500000.}'
+```
+
+|rand7 invocations|Proportion of rand5 invocations|
+|------:|---------:|
+|  1    |0.71464|
+|  2    |0.20317|
+|  3    |0.05870|
+|  4    |0.01686|
+|  5    |0.00480|
+|  6    |0.00124|
+|  7    |0.00041|
+|  8    |0.00012|
+|  9    |0.00004|
+| 10    |0.00001|
+| 11    |0.00001|
+
+5/7 equates to approximately .71428,
+2/7*5/7 is approximately .20317,
+2/7*2/7*5/7 is approximately .05830,
+and so forth.
+It checks out.
+Seems like there's a vanishingly 
+small number of invocations of `rand5` that will invoke `rand7`
+more than 10 times.
+
+
 ## Interview Analysis
+
 
 Asking a problem that hinges on recognizing some specific
 aspect of a non-programming question seems absurd.
