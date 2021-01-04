@@ -55,19 +55,19 @@ $ go build r7a.go
 $ ./r7a | sort -k1.1n | uniq -c | awk '{printf "%4d  %.5f\n", $2, $1/500000.}'
 ```
 
-|rand7 invocations|Proportion of rand5 invocations|
-|------:|---------:|
-|  1    |0.71464|
-|  2    |0.20317|
-|  3    |0.05870|
-|  4    |0.01686|
-|  5    |0.00480|
-|  6    |0.00124|
-|  7    |0.00041|
-|  8    |0.00012|
-|  9    |0.00004|
-| 10    |0.00001|
-| 11    |0.00001|
+|rand7 invocations|Proportion of rand5 invocations|Running proportion total|
+|------:|---------:|--------:|
+|   1|0.71435|0.71435|
+|   2|0.20300|0.91736|
+|   3|0.05899|0.97634|
+|   4|0.01681|0.99315|
+|   5|0.00492|0.99807|
+|   6|0.00138|0.99945|
+|   7|0.00038|0.99983|
+|   8|0.00014|0.99997|
+|   9|0.00003|0.99999|
+|  10|0.00000|1.00000|
+|  11|0.00000|1.00000|
 
 5/7 equates to approximately .71428,
 2/7*5/7 is approximately .20317,
@@ -76,7 +76,7 @@ and so forth.
 It checks out.
 Seems like there's a vanishingly 
 small number of invocations of `rand5` that will invoke `rand7`
-more than 10 times.
+more than, say, 15 times.
 
 
 ## Interview Analysis
