@@ -1,0 +1,5 @@
+#!/bin/bash
+set -eou pipefail
+
+./r7a | sort -k1.1n | uniq -c |
+awk '{x = $1/500000.; sum += x; printf "|%4d|%.5f|%.5f|\n", $2, x, sum}'
