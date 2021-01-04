@@ -70,8 +70,8 @@ $ ./r7a | sort -k1.1n | uniq -c | awk '{printf "%4d  %.5f\n", $2, $1/500000.}'
 |  11|0.00000|1.00000|
 
 5/7 equates to approximately .71428,
-2/7*5/7 is approximately .20317,
-2/7*2/7*5/7 is approximately .05830,
+2/7\*5/7 is approximately .20317,
+2/7\*2/7\*5/7 is approximately .05830,
 and so forth.
 It checks out.
 Seems like there's a vanishingly 
