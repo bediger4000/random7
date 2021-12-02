@@ -45,7 +45,7 @@ of 5 or 6 from the `rand7` function,
 which would cause my function to never return.
 It's certainly possible to calculate that `rand5`
 returns 5/7 of the time after 1 invocation of `rand7`,
-2/7*5/7 of the time after 2 invocations,
+2/7\*5/7 of the time after 2 invocations,
 but I did an empirical investigation by writing
 a [version](r7a.go) that outputs the number of invocations
 of `rand7` it did to get to a 0-4 valued output of `rand5`
@@ -94,3 +94,22 @@ out some obscure factoid while in a very stressful situation.
 In sum, don't use this question in an interview,
 and don't feel bad if you get this question in an interview
 then crash and burn. Not your fault.
+
+# Daily Coding Problem: Problem #1064 [Easy]
+
+This problem was asked by Two Sigma.
+
+Using a function rand5() that returns an integer from 1 to 5 (inclusive)
+with uniform probability,
+implement a function rand7() that returns an integer from 1 to 7 (inclusive).
+
+## Analysis
+
+Problem #1064 is the opposite of #761.
+
+My [first solution](r5.go) is based on the observation that the problem
+statement says nothing about the distribution of integers from 1 to 7.
+
+[Stack Exchange answer](https://stackoverflow.com/questions/137783/expand-a-random-range-from-1-5-to-1-7)
+
+[Reddit answers](https://www.reddit.com/r/compsci/comments/2mhqdz/rand5_from_rand7/)
