@@ -32,6 +32,9 @@ func main() {
 	if m <= n {
 		log.Fatalf("%d has to be greater than %d\n", m, n)
 	}
+	if m > n*n {
+		log.Fatalf("%d has to be greater than %d*%d\n", m, n, n)
+	}
 
 	fmt.Fprintf(os.Stderr, "Should end up with about %d of each value\n", max/m)
 
