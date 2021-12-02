@@ -142,7 +142,7 @@ $
 ```
 
 Just to put this problem to bed, I wrote a [third solution](rmn.go),
-which will create a uniform output 1-M,
+which will create a uniform output with values 1 through M,
 from a "rand N" function that returns values 0 through N - 1 uniformly.
 
 ```sh
@@ -158,6 +158,8 @@ Should end up with about 71428 of each value
   71381 7
 $
 ```
+The algorithm will work for M > N and M < N<sup>2</sup>.
+It requires extra space O(N<sup>2</sup>).
 
 ### Interview analysis
 
