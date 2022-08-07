@@ -78,6 +78,12 @@ Seems like there's a vanishingly
 small number of invocations of `rand5` that will invoke `rand7`
 more than, say, 15 times.
 
+[Nicola Moro's solution](https://medium.com/@nicola.moro2312/writeup-daily-coding-problem-n-4-9d75c264a982)
+
+I don't like Moro's solution at all: Moro ends up creating an array based on the `rand7` function's output,
+then calling a random-choice function on that array.
+Why bother calling `rand7`?
+
 
 ## Interview Analysis
 
@@ -182,3 +188,4 @@ the candidate could exhibit a lot of coding skills.
 
 All of these would show up in setting up the NxN array.
 Making one distribution from another merely motivates the work.
+
